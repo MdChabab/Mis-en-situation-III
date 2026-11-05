@@ -224,3 +224,65 @@ const reimbursements = [
         date: "2026-08-15"
     }
 ];
+
+
+// --------------- Niveau facile ---------------
+
+
+function getActiveGroups(groups) {
+    groups = groups.filter((group) => !group.cloture)
+    // console.log(groups)
+    return groups;
+}
+
+getActiveGroups(groups);
+
+
+function findMemberById(members, id) {
+    let foundMember = members.find((member) => member.id == id)
+    // console.log(foundMember)
+    return foundMember;
+}
+
+findMemberById(members, 2);
+
+
+function getTotalExpenses(expenses, groupId) {
+    //forgot reduce syntax
+    
+    let totalExpenses = 0;
+    expenses.forEach(expense => {
+        totalExpenses += expense.montant;
+    });
+
+    // console.log(totalExpenses)
+    return totalExpenses;
+}
+
+getTotalExpenses(expenses, 1)
+
+
+function getExpensesByCategory(expenses, groupId, category) {
+    let categoryExpenses = expenses.filter((expense) => 
+        expense.groupeId == groupId && expense.categorie == category)
+
+    categoryExpenses.forEach(ctgrExpense => {
+        // console.log(ctgrExpense.montant)
+        return ctgrExpense.montant;
+    }); 
+
+}
+
+getExpensesByCategory(expenses, 1, "Hébergement")
+
+
+function getMemberExpenses(expenses, memberId) {
+    let memberExpensesList = expenses.filter((expense) => {
+        if (expense.payeurId == memberId) {
+            return expense;
+        } else {
+            expense.parts.filter.((member) => member.membreId == memberId)
+        }
+    })
+}
+
