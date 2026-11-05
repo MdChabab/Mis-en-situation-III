@@ -281,8 +281,12 @@ function getMemberExpenses(expenses, memberId) {
         if (expense.payeurId == memberId) {
             return expense;
         } else {
-            expense.parts.filter.((member) => member.membreId == memberId)
+            expense.parts.filter((member) => member.membreId == memberId)
         }
     })
+    // console.log(memberExpensesList)
+    return memberExpensesList;
 }
+
+getMemberExpenses(expenses, 5)
 
